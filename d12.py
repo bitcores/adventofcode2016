@@ -1,5 +1,5 @@
-
-reg = {'a':0,'b':0,'c':1,'d':0}
+# set c to 1 for part 2
+reg = {'a':0,'b':0,'c':0,'d':0}
 instru = []
 
 with open("input12.txt") as fp:
