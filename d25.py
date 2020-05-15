@@ -66,13 +66,14 @@ while True:
             rd4 = instru[ptr+4]
             # division
             if rd1[0] == 'dec' and rd2[0] == 'jnz' and rd2[2] == '-4' and rd3[0] == 'inc' and rd4[0] == 'jnz' and rd4[2] == '-7':
-                reg[rd3[1]] = reg[rd3[1]] + floor(reg[rd[1]] / reg[rd2[1]])
-                reg[rd[1]] = 0
-                # if there is no remainder, the value of register rd3[1] (c) is 2, else 1
-                if reg[rd3[1]] % 2 == 0:
+                reg[rd3[1]] = reg[rd3[1]] + floor(reg[rd[1]] / reg[rd1[1]])                
+				# if the register rd[1] (d) divides evenly by rd1[1] (c)
+                # there is no remainder, the value of register rd1[1] (c) is 2, else 1
+                if reg[rd[1]] % reg[rd1[1]] == 0:
                     reg[rd1[1]] = 2
                 else:
                     reg[rd1[1]] = 1
+                reg[rd[1]] = 0
                 ptr += 5
                 continue
             if rd[1] in reg:
